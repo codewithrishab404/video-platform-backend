@@ -1,6 +1,6 @@
 // 1st way : To create async handler using Promise
 const asyncHandler = (requestHandler) => {
-    (req, res, next) => {
+    return (req, res, next) => {
         Promise.resolve(requestHandler(req, res, next)).catch((err) => next(err));
     };
 };
@@ -9,7 +9,7 @@ const asyncHandler = (requestHandler) => {
 export { asyncHandler };
 
 
-//? 2nd way async handler using trycatch block
+//? 2nd way async handler using trycatch block 
 // const asyncHandler = (fn) => async (req, res, next) => {
 //     try {
 //         await fn(req, res, next);
